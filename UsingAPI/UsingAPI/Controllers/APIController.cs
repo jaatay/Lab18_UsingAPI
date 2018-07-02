@@ -20,12 +20,20 @@ namespace UsingAPI.Controllers
     public class APIController: Controller
     {
 
+		/// <summary>
+		/// default index view
+		/// </summary>
+		/// <returns>view</returns>
 		public async Task<IActionResult>Index()
 		{
 	
 			return View();	
 		}
 
+		/// <summary>
+		/// method to get all lists
+		/// </summary>
+		/// <returns>result from api call in a string</returns>
 		public async Task<string> GetAllLists()
 		{
 			using (HttpClient client = new HttpClient())
@@ -48,6 +56,10 @@ namespace UsingAPI.Controllers
 			return "";
 		}
 
+		/// <summary>
+		/// method to get one todo list
+		/// </summary>
+		/// <returns>api call list by id number</returns>
 		public async Task<string> GetOneList()
 		{
 			using (HttpClient client = new HttpClient())
@@ -68,6 +80,10 @@ namespace UsingAPI.Controllers
 			return "";
 		}
 
+		/// <summary>
+		/// method to get all items
+		/// </summary>
+		/// <returns>api call of all to do items</returns>
 		public async Task<string> GetAllItems()
 		{
 			using (HttpClient client = new HttpClient())
@@ -88,6 +104,10 @@ namespace UsingAPI.Controllers
 			return "";
 		}
 
+		/// <summary>
+		/// method to get one item
+		/// </summary>
+		/// <returns>api call to return one list item</returns>
 		public async Task<string> GetOneItem()
 		{
 			using (HttpClient client = new HttpClient())

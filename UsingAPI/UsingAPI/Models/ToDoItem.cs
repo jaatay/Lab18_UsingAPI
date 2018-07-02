@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 
 namespace UsingAPI.Models
 {
+	/// <summary>
+	/// todo item class
+	/// </summary>
     public class ToDoItem
     {
 		public int ID { get; set; }

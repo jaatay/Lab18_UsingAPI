@@ -15,6 +15,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace UsingAPI.Controllers
 {
+	/// <summary>
+	/// default home view class
+	/// </summary>
     public class HomeController: Controller
     {
 		public IActionResult Index()

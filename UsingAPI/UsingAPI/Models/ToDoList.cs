@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 
 namespace UsingAPI.Models
 {
+	/// <summary>
+	/// todo list class
+	/// </summary>
 	public class ToDoList
 	{
 

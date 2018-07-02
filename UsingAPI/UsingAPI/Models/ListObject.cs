@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace UsingAPI.Models
 {
+	/// <summary>
+	/// list object class
+	/// </summary>
 	public class ListObject
 	{
 		public NewList[] Property1 { get; set; }
