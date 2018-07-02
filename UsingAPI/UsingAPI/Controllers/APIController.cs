@@ -19,17 +19,56 @@ namespace UsingAPI.Controllers
 {
     public class APIController: Controller
     {
-		public async Task<IActionResult> Index()
-		{
-			string value = await APICall();
 
-			ListObject mainObject = new ListObject();
-			
-			return View();
-			
+		public async Task<IActionResult>Index()
+		{
+	
+			return View();	
 		}
 
-		public async Task<string> APICall()
+		public async Task<string> GetAllLists()
+		{
+			using (HttpClient client = new HttpClient())
+			{
+				client.BaseAddress = new Uri("https://todoapi20180628081232.azurewebsites.net");
+
+				var response = client.GetAsync("api/todolist").Result;
+
+				if (response.EnsureSuccessStatusCode().IsSuccessStatusCode)
+				{
+					
+					var stringResult = await response.Content.ReadAsStringAsync();
+					
+					//ListObject mainObject = JsonConvert.DeserializeObject<ListObject>(stringResult);
+
+					return stringResult;
+				}
+			}
+
+			return "";
+		}
+
+		public async Task<string> GetOneList()
+		{
+			using (HttpClient client = new HttpClient())
+			{
+				client.BaseAddress = new Uri("https://todoapi20180628081232.azurewebsites.net");
+
+				var response = client.GetAsync("api/todolist/2").Result;
+
+				if (response.EnsureSuccessStatusCode().IsSuccessStatusCode)
+				{
+
+					var stringResult = await response.Content.ReadAsStringAsync();
+
+					return stringResult;
+				}
+			}
+
+			return "";
+		}
+
+		public async Task<string> GetAllItems()
 		{
 			using (HttpClient client = new HttpClient())
 			{
@@ -39,13 +78,29 @@ namespace UsingAPI.Controllers
 
 				if (response.EnsureSuccessStatusCode().IsSuccessStatusCode)
 				{
-					
-					var stringResult = await response.Content.ReadAsStringAsync();
-					
-					//ListObject mainObject = JsonConvert.DeserializeObject<ListObject>(stringResult);
 
-					
-					
+					var stringResult = await response.Content.ReadAsStringAsync();
+
+					return stringResult;
+				}
+			}
+
+			return "";
+		}
+
+		public async Task<string> GetOneItem()
+		{
+			using (HttpClient client = new HttpClient())
+			{
+				client.BaseAddress = new Uri("https://todoapi20180628081232.azurewebsites.net");
+
+				var response = client.GetAsync("api/todo/1").Result;
+
+				if (response.EnsureSuccessStatusCode().IsSuccessStatusCode)
+				{
+
+					var stringResult = await response.Content.ReadAsStringAsync();
+
 					return stringResult;
 				}
 			}
